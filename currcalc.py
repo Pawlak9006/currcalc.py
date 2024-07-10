@@ -27,7 +27,18 @@ else:
             # print(odpowiedz)
             
             if odpowiedz == "Tak" or odpowiedz == "tak":
-                ilosc = float(input(f"Podaj ilość: "))                
+                while True:
+                    ilosc = input(f"Podaj ilość: ")
+                    try:
+                        ilosc = float(ilosc)
+                        if ilosc <= 0:
+                            print("Podaj Kwotę większą niż 0 dzbanku ^^")
+                        else:
+                            break
+                    except ValueError:
+                        print("Hey podaj liczbę, It is NEED TO BE A NUMBER OVER 0 !")
+
+
                 wynik = kurs * ilosc
                 # print(f"1 {waluta} = {kurs} PLN ")
                 print(f"{ilosc} {waluta} = {wynik} PLN w dniu {dzisiaj}")
