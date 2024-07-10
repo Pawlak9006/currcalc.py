@@ -9,9 +9,7 @@ waluta = input("Podaj walute: ").upper() # upper = WIELKIE LITERY
 
 if waluta == "PLN":
     print("1 PLN = 1 PLN") 
-else:
-    ilosc = float(input(f"Podaj ilość: "))
-    
+else:        
     dzisiaj = datetime.today().strftime('%Y-%m-%d')
     print(" ")
 
@@ -23,10 +21,22 @@ else:
         dane = strona.json()
         if 'rates' in dane:
             kurs = dane['rates'][0]['mid']
-            wynik = kurs * ilosc
-            print(f"1 {waluta} = {kurs} PLN ")
-            print(f"{ilosc} {waluta} = {wynik} PLN w dniu {dzisiaj}")
+            
+            print(f"1 {waluta} = {kurs} PLN w dniu {dzisiaj}")
+            odpowiedz = input("chcesz podać ilość do wymiany? Tak/Nie : ")
+            # print(odpowiedz)
+            
+            if odpowiedz == "Tak" or odpowiedz == "tak":
+                ilosc = float(input(f"Podaj ilość: "))                
+                wynik = kurs * ilosc
+                # print(f"1 {waluta} = {kurs} PLN ")
+                print(f"{ilosc} {waluta} = {wynik} PLN w dniu {dzisiaj}")
+            else:
+                print(f"1 {waluta} = {kurs} PLN na dzień {dzisiaj}")
         else:
             print("Nie znaleziono kursu dla danej waluty")
     else:
         print(f"Nie można pobrać danych dla {waluta}")
+
+
+
